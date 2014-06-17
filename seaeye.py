@@ -4,6 +4,12 @@ from archive import Archiver
 from build import ShellBuilder
 from vcs import GitVCS
 
+workspace = os.path.join(".", "workspace")
+archive = os.path.join(".", "archive")
+
+os.mkdir(workspace)
+os.mkdir(archive)
+
 git = GitVCS(os.path.join(".", "workspace"), "https://github.com/vemacs/LoadControl.git")
 git.copy()
 git.update()

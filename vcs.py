@@ -23,6 +23,7 @@ class GitVCS(VCS):
 
     def update(self):
         p = subprocess.Popen(["git", "pull"], cwd=self.workspace)
+        p.wait()
         for line in p.stdout.readlines():
             if line.startswith("Already up-to-date."):
                 return False
