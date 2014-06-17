@@ -17,5 +17,5 @@ git.update()
 maven = ShellBuilder("mvn clean install", os.path.join(".", "workspace"))
 maven.build()
 
-archive = Archiver(os.path.join(".", "archive"), "*.jar")
-archive.archive(".")
+archiver = Archiver(os.path.join(".", "archive"), "*.jar")
+archiver.archive(".")

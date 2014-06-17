@@ -13,4 +13,4 @@ class ShellBuilder(Builder):
         self.command = command
 
     def build(self):
-        call(self.command.split(" "))
+        call(self.command.split(" "), cwd=self.workspace)

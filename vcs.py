@@ -19,7 +19,7 @@ class GitVCS(VCS):
 
     def copy(self):
         # I think we should be safe with shell=False
-        call(["git", "clone", self.url], cwd=self.workspace)
+        call(["git", "clone", self.url, "."], cwd=self.workspace)
 
     def update(self):
         p = subprocess.Popen(["git", "pull"], cwd=self.workspace, stdout=subprocess.PIPE)
