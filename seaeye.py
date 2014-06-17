@@ -7,15 +7,21 @@ from vcs import GitVCS
 workspace = os.path.join(".", "workspace")
 archive = os.path.join(".", "archive")
 
-os.mkdir(workspace)
-os.mkdir(archive)
+try:
+    os.mkdir(workspace)
+    os.mkdir(archive)
+except:
+    pass
 
-git = GitVCS(os.path.join(".", "workspace"), "https://github.com/vemacs/LoadControl.git")
+print("Attempting clone")
+git = GitVCS(workspace, "https://github.com/vemacs/LoadControl.git")
 git.copy()
 git.update()
 
-maven = ShellBuilder("mvn clean install", os.path.join(".", "workspace"))
+print("Attempting build")
+maven = ShellBuilder("mvn clean install", workspace)
 maven.build()
 
+print("Attempting archive")
 archiver = Archiver(os.path.join(".", "archive"), "*.jar")
 archiver.archive(".")
