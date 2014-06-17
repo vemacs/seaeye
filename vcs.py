@@ -22,7 +22,7 @@ class GitVCS(VCS):
         call(["git", "clone", self.url], cwd=self.workspace)
 
     def update(self):
-        p = subprocess.Popen(["git", "pull"], cwd=self.workspace)
+        p = subprocess.Popen(["git", "pull"], cwd=self.workspace, stdout=subprocess.PIPE)
         p.wait()
         for line in p.stdout.readlines():
             if line.startswith("Already up-to-date."):
