@@ -15,8 +15,8 @@ class Archiver():
         except:
             version = 0
         version += 1
-        ver = open(vfile, "rw")
-        ver.write(str(version))
+        with open(vfile, "rw+") as ver:
+            ver.write(str(version))
         storage = os.path.join(self.archivedir, str(version))
         os.mkdir(storage)
         for match in self.get_recursive_matches(workspace, self.pattern):
