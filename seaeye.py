@@ -15,10 +15,8 @@ except:
 
 print("Attempting update")
 git = GitVCS(workspace, "https://github.com/vemacs/LoadControl.git")
-if os.path.exists(workspace):
-    git.update()
-else:
-    git.copy()
+git.copy()
+git.update()
 
 print("Attempting build")
 maven = ShellBuilder("mvn clean install", workspace)
