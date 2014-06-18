@@ -23,6 +23,7 @@ class Archiver():
             with open(os.path.join(storage, os.path.splitext(os.path.basename(match))[0] + ".sha1"), "w+") as hashfile:
                 hashfile.write(self.sha1OfFile(match))
             copy2(match, storage)
+            print("Copied " + str(match) + " to " + str(storage))
 
     def get_recursive_matches(self, dir, pattern):
         matches = []

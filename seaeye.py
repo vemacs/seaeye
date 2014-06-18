@@ -13,10 +13,12 @@ try:
 except:
     pass
 
-print("Attempting clone")
+print("Attempting update")
 git = GitVCS(workspace, "https://github.com/vemacs/LoadControl.git")
-git.copy()
-git.update()
+if os.path.exists(workspace):
+    git.update()
+else:
+    git.copy()
 
 print("Attempting build")
 maven = ShellBuilder("mvn clean install", workspace)
