@@ -8,13 +8,15 @@ class Archiver():
         self.pattern = pattern
 
     def archive(self, workspace):
-        with open(os.path.join(self.archivedir, "VERSION")) as vfile:
-            try:
-                version = int(vfile.readline())
-            except:
-                version = 1
-            version += 1
-            vfile.write(str(version))
+        vfile = os.path.join(self.archivedir, "VERSION")
+        try:
+            with open(vfile) as ver:
+                version = int(ver.readline())
+        except:
+            version = 0
+        version += 1
+        ver = open(vfile, "rw")
+        ver.write(str(version))
         storage = os.path.join(self.archivedir, str(version))
         os.mkdir(storage)
         for match in self.get_recursive_matches(workspace, self.pattern):
