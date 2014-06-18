@@ -26,4 +26,4 @@ maven.build()
 
 print("Attempting archive")
 archiver = Archiver(archive, "*.jar")
-archiver.archive(".")
+archiver.archive(workspace)
