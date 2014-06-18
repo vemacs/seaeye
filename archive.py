@@ -20,7 +20,7 @@ class Archiver():
         storage = os.path.join(self.archivedir, str(version))
         os.mkdir(storage)
         for match in self.get_recursive_matches(workspace, self.pattern):
-            with open(storage, os.path.splitext(os.path.basename(match))[0] + ".sha1") as hashfile:
+            with open(os.path.join(storage, os.path.splitext(os.path.basename(match))[0] + ".sha1"), "w+") as hashfile:
                 hashfile.write(self.sha1OfFile(match))
             copy2(match, storage)
 
