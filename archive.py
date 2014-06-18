@@ -15,7 +15,7 @@ class Archiver():
         except:
             version = 0
         version += 1
-        with open(vfile, "rw+") as ver:
+        with open(vfile, "w+") as ver:
             ver.write(str(version))
         storage = os.path.join(self.archivedir, str(version))
         os.mkdir(storage)
