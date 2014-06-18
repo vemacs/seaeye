@@ -23,5 +23,5 @@ maven = ShellBuilder("mvn clean install", workspace)
 maven.build()
 
 print("Attempting archive")
-archiver = Archiver(os.path.join(".", "archive"), "*.jar")
+archiver = Archiver(archive, "*.jar")
 archiver.archive(".")
